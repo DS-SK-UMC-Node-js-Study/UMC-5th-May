@@ -5,6 +5,7 @@ import { response } from "./config/response.js";
 import { tempRouter } from "./src/routes/temp.route.js";
 import { userRouter } from "./src/routes/user.route.js";
 import { storeRouter } from "./src/routes/store.route.js";
+import { storeGetRouter } from "./src/routes/storeGet.route.js";
 import { BaseError } from "./config/error.js";
 import { status } from "./config/response.status.js";
 import { specs } from "./config/swagger.config.js";
@@ -47,6 +48,7 @@ app.get("/hello", (req, res) => {
 app.use("/temp", tempRouter);
 app.use("/user", userRouter);
 app.use("/store", storeRouter);
+app.use("/:store_id", storeGetRouter);
 
 // error handling
 app.use((req, res, next) => {
