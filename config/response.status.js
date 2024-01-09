@@ -31,4 +31,5 @@ export const status = {
 
   // store err
   STORE_ALREADY_EXIST: { status: StatusCodes.BAD_REQUEST, isSuccess: false, code: "STORE4001", message: "이미 가게가 존재합니다." },
+  STORE_NOT_EXIST: { status: StatusCodes.NOT_FOUND, isSuccess: false, code: "STORE4002", message: "리뷰를 작성하려는 가게가 없습니다." },
 };
