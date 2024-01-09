@@ -15,11 +15,15 @@ export const addUser = async (data) => {
       return -1;
     }
 
-    const result = await pool.query(insertUserSql, [data.email, data.name, data.gender, data.birth, data.addr, data.specAddr, data.phone]);
+    console.log("Inserting user data:", data); // 추가: 데이터가 올바르게 전달되는지 확인하기 위한 로그
+
+    // const result = await pool.query(insertUserSql, [data.email, data.name, data.gender, data.birth, data.addr, data.specAddr, data.phone]);
+    const result = await pool.query(insertUserSql, [data.name, data.nickname, data.gender, data.age, data.address, data.spec_address, data.email, data.phone_number]);
 
     conn.release();
     return result[0].insertId;
   } catch (err) {
+    console.error("Error in addUser:", err); // 추가: 에러 발생 시 에러 메시지 출력
     throw new BaseError(status.PARAMETER_IS_WRONG);
   }
 };
@@ -48,12 +52,15 @@ export const setPrefer = async (userId, foodCategoryId) => {
   try {
     const conn = await pool.getConnection();
 
+    console.log("Mapping prefer:", userId, foodCategoryId); // 추가: 로그 출력
+
     await pool.query(connectFoodCategory, [foodCategoryId, userId]);
 
     conn.release();
 
     return;
   } catch (err) {
+    console.error("Error in setPrefer:", err); // 추가: 에러 메시지 출력
     throw new BaseError(status.PARAMETER_IS_WRONG);
   }
 };
