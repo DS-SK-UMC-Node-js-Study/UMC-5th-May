@@ -11,3 +11,8 @@ export const insertReviewSql = "INSERT INTO review (member_id, store_id, body, s
 export const getReviewID = "SELECT * FROM review WHERE id = ?;";
 
 export const confirmStore = "SELECT EXISTS(SELECT id FROM store WHERE id = ?) as isExistStore;";
+
+// 가게 미션 추가
+export const insertMissionSql = "INSERT INTO mission (store_id, reward, deadline, mission_spec) VALUES (?, ?, ?, ?);";
+
+export const getMissionID = "SELECT * FROM mission WHERE id = ?;";

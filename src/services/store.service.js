@@ -1,7 +1,7 @@
 import { BaseError } from "../../config/error.js";
 import { status } from "../../config/response.status.js";
-import { addstoreResponseDTO, addreviewResponseDTO } from "../dtos/store.dto.js";
-import { addStore, getStore, addReview, getReview } from "../models/store.dao.js";
+import { addstoreResponseDTO, addreviewResponseDTO, addmissionResponseDTO } from "../dtos/store.dto.js";
+import { addStore, getStore, addReview, getReview, addMission, getMission } from "../models/store.dao.js";
 
 export const joinStore = async (body) => {
   const joinStoreData = await addStore({
@@ -30,4 +30,15 @@ export const joinReview = async (body) => {
   } else {
     return addreviewResponseDTO(await getReview(joinReviewData));
   }
+};
+
+export const joinMission = async (body) => {
+  const joinMissionData = await addMission({
+    store_id: body.store_id,
+    reward: body.reward,
+    deadline: body.deadline,
+    mission_spec: body.mission_spec,
+  });
+
+  return addmissionResponseDTO(await getMission(joinMissionData));
 };
