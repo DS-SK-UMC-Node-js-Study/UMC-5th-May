@@ -1,0 +1,27 @@
+select * from region;
+
+insert into region (name) values('종로구');
+insert into region (name) values('중구');
+insert into region (name) values('용산구');
+insert into region (name) values('성동구');
+insert into region (name) values('광진구');
+insert into region (name) values('동대문구');
+insert into region (name) values('중랑구');
+insert into region (name) values('성북구');
+insert into region (name) values('강북구');
+insert into region (name) values('도봉구');
+insert into region (name) values('노원구');
+insert into region (name) values('은평구');
+insert into region (name) values('서대문구');
+insert into region (name) values('마포구');
+insert into region (name) values('양천구');
+insert into region (name) values('강서구');
+insert into region (name) values('구로구');
+insert into region (name) values('금천구');
+insert into region (name) values('영등포구');
+insert into region (name) values('동작구');
+insert into region (name) values('관악구');
+insert into region (name) values('서초구');
+insert into region (name) values('강남구');
+insert into region (name) values('송파구');
+insert into region (name) values('강동구');
