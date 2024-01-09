@@ -28,4 +28,7 @@ export const status = {
   LOGIN_PARAM_NOT_EXIST: { status: StatusCodes.BAD_REQUEST, isSuccess: false, code: "SIGNIN4001", message: "ID 혹은 PW 값이 존재하지 않습니다." },
   LOGIN_ID_NOT_EXIST: { status: StatusCodes.NOT_FOUND, isSuccess: false, code: "SIGNIN4002", message: "아이디를 찾을 수 없습니다." },
   LOGIN_PASSWORD_WRONG: { status: StatusCodes.BAD_REQUEST, isSuccess: false, code: "SIGNIN4003", message: "비밀번호가 일치하지 않습니다." },
+
+  // store err
+  STORE_ALREADY_EXIST: { status: StatusCodes.BAD_REQUEST, isSuccess: false, code: "STORE4001", message: "이미 가게가 존재합니다." },
 };
