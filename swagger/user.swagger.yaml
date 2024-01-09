@@ -103,3 +103,83 @@ paths:
               message:
                 type: string
                 example: 서버 에러, 관리자에게 문의 바랍니다.
+  /user/doMission:
+    post:
+      tags:
+        - User-Mission
+      summary: 미션 도전
+      parameters:
+        - name: doMission
+          in: body
+          required: true
+          schema:
+            properties:
+              member_id:
+                type: integer
+                description: 유저 번호
+                example: 1
+              mission_id:
+                type: integer
+                description: 미션 번호
+                example: 1
+              status:
+                type: string
+                description: 미션 도전 상태
+                example: progress
+      responses:
+        "200":
+          description: 미션 도전 시도 성공!
+          schema:
+            type: object
+            properties:
+              status:
+                type: integer
+                example: 200
+              isSuccess:
+                type: boolean
+                example: true
+              code:
+                type: integer
+                example: 2000
+              message:
+                type: string
+                example: "success!"
+              data:
+                type: object
+                example: { "member_id": 1, "mission_id": 1, "status": "progress" }
+
+        "400":
+          description: 잘못된 요청
+          schema:
+            type: object
+            properties:
+              status:
+                type: integer
+                example: 400
+              isSuccess:
+                type: boolean
+                example: false
+              code:
+                type: integer
+                example: COMMON001
+              message:
+                type: string
+                example: 잘못된 요청입니다
+
+        "500":
+          description: 서버 에러
+          schema:
+            type: object
+            properties:
+              status:
+                type: integer
+                example: 500
+              isSuccess:
+                type: boolean
+                example: false
+              code:
+                type: integer
+                example: COMMON000
+              message:
+                type: string
+                example: 서버 에러, 관리자에게 문의 바랍니다.

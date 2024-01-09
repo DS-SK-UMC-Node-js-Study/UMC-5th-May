@@ -1,7 +1,7 @@
 import { BaseError } from "../../config/error.js";
 import { status } from "../../config/response.status.js";
-import { signinResponseDTO } from "../dtos/user.dto.js";
-import { addUser, getUser, getUserPreferToUserID, setPrefer } from "../models/user.dao.js";
+import { signinResponseDTO, adddomissionResponseDTO } from "../dtos/user.dto.js";
+import { addUser, getUser, getUserPreferToUserID, setPrefer, addDoMission, getDoMission } from "../models/user.dao.js";
 
 export const joinUser = async (body) => {
   // const birth = new Date(body.birthYear, body.birthMonth, body.birthDay);
@@ -32,5 +32,19 @@ export const joinUser = async (body) => {
       await setPrefer(joinUserData, prefer[i]);
     }
     return signinResponseDTO(await getUser(joinUserData), await getUserPreferToUserID(joinUserData));
+  }
+};
+
+export const joinDoMission = async (body) => {
+  const joinDoMissionData = await addDoMission({
+    member_id: body.member_id,
+    mission_id: body.mission_id,
+    status: body.status,
+  });
+
+  if (joinDoMissionData == -1) {
+    throw new BaseError(status.MISSION_ALREADY_DOING_EXIST);
+  } else {
+    return adddomissionResponseDTO(await getDoMission(joinDoMissionData));
   }
 };
