@@ -9,10 +9,12 @@ export const getPreviewReview = async (cursorId, size, store_id) => {
     const conn = await pool.getConnection();
 
     if (cursorId == "undefined" || typeof cursorId == "undefined" || cursorId == null) {
+      // console.log("Query Parameters:", [store_id, cursorId, size]);
       const [reviews] = await pool.query(getReviewByReviewIdAtFirst, [parseInt(store_id), parseInt(size)]);
       conn.release();
       return reviews;
     } else {
+      // console.log("Query Parameters:", [store_id, cursorId, size]);
       const [reviews] = await pool.query(getReviewByReviewId, [parseInt(store_id), parseInt(cursorId), parseInt(size)]);
       conn.release();
       return reviews;
