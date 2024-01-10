@@ -13,7 +13,7 @@ export const previewReviewResponseDTO = (data) => {
   return { reviewData: reviews, cursorId: data[data.length - 1].review_id };
 };
 
-// 리뷰 조회
+// 미션 조회
 export const previewMissionResponseDTO = (data) => {
   const missions = [];
 
